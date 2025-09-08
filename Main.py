@@ -31,7 +31,7 @@ def main():
           print("Sua Participação foi autorizada, aluno de RM {}!".format(rm))
           print("Mais informações serão enviadas para seu e-mail cadastrado!")
 
-          entrada = input("Informe a de satisfação (0-100): ").strip()
+          entrada = input("Informe a nota de satisfação (0-100): ").strip()
           try:
               classificacao = classificar_satisfacao(entrada)
               print(f"Classificação: {classificacao}")
@@ -42,4 +42,5 @@ def main():
           print("Infelizmente, a participação não foi autorizada, aluno de RM{}.".format(rm))
 
 if __name__ == "__main__":
+
         main()
