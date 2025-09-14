@@ -1,22 +1,25 @@
-# 📌 Classificação de Nível de Satisfação (SAC)  
+# 📌 Classificação de Nível de Satisfação (SAC)
 
-## 📖 Descrição  
-Este projeto implementa um programa em **Python** para classificar o nível de satisfação dos atendimentos do **SAC (Serviço de Atendimento ao Cliente)** da empresa fictícia **Melhores Compras LTDA**.  
+## 📖 Descrição
+Este projeto implementa um programa em Python para classificar o nível de satisfação dos atendimentos do SAC (Serviço de Atendimento ao Cliente) da empresa fictícia **Melhores Compras LTDA**.  
 
-A classificação segue as regras:  
-- **Qualidade** → notas de **90 a 100**  
-- **Neutro** → notas de **70 a 89**  
-- **Insatisfatório** → notas **abaixo de 70**  
+A classificação segue as regras:
+- **Qualidade** → notas de **90 a 100**
+- **Neutro** → notas de **70 a 89**
+- **Insatisfatório** → notas **abaixo de 70**
 
 Além disso, o sistema solicita ao usuário o **RM** e a **idade** para validar a participação.  
+Se a idade for maior ou igual a 18 anos, a avaliação é autorizada e salva no **Oracle Database**.
 
 ---
 
-## ⚙️ Funcionalidades  
-- Solicita o **RM** do aluno.  
-- Solicita a **idade** e valida se é maior ou igual a 18 anos.  
-- Se autorizado, pede a **nota de satisfação (0 a 100)**.  
-- Classifica automaticamente a nota em uma das três categorias.  
+## ⚙️ Funcionalidades
+- Solicita o **RM do aluno**.  
+- Solicita a **idade** e valida se é maior ou igual a **18 anos**.  
+- Se autorizado:
+  - Pede a **nota de satisfação** (0 a 100).  
+  - Classifica automaticamente a nota em uma das três categorias.  
+  - Salva os dados no banco Oracle (tabela `SGV_SAC_CHAMADO`).  
 - Exibe mensagens de erro se a entrada for inválida.  
 
 ---
