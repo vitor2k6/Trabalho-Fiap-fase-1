@@ -1,5 +1,8 @@
+
+import oracledb
+
 # Codigo_Nivel_Atendimento_SAC_Melhores_Compras.py
-from sys import excepthook
+from sys import excepthook, exception
 
 
 def classificar_satisfacao(nota):
@@ -23,6 +26,45 @@ def classificar_satisfacao(nota):
     else:
         return "Insatisfatorio"
 
+
+# Função para salvar no Oracle
+
+def salvar_no_oracle(rm, idade, nota, classificacao):
+    """
+    
+    Salva os dados de avaliação no banco de dados Oracle.
+    Ajuste as credenciais de conexão (user, password, dsn).
+    """
+
+    try:
+        conn = oracledb.connect(
+            user="SEU_USUARIO",          # TROQUE AQUI
+            password="SUA_SENHA",        # TROQUE AQUI
+            dsn="localhost:1521/XEPDB1"  # TROQUE AQUI (host:porta/ServiceName
+        )
+        cursor = conn.cursor()
+
+        # Exemplo: inserindo em SGV_SAC_CHAMADO
+        # Ajuste os campos conforme sua modelagem
+        cursor.execute("""
+            INSERT INTO SGV_SAC_CHAMADO
+                (cd_chamado, cd_cliente, vl_indice_satisfacao, st_chamado)
+            VALUES
+                (SGV_SAC_CHAMADO_SEQ.NEXTVAL, :1, :2,:3)
+        """,(rm, nota, classificacao))
+
+        conn.commit()
+        print("✔ Avaliação salva no bano Oracle com sucesso!")
+
+    except Exception as e:
+        print(f" Erro ao salvar no banco: {e}")
+
+    finally:
+        if cursor:
+            cursor.close()
+        if conn:
+            conn.close()
+
 def main():
       rm = input(" Insira seu RM: ")
       idade = input("Insira sua idade: ")
@@ -44,3 +86,4 @@ def main():
 if __name__ == "__main__":
 
         main()
+
